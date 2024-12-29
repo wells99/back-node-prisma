@@ -1,11 +1,13 @@
 import express, { request, response } from 'express'
 import { PrismaClient } from '@prisma/client'
+import cors from "cors";
 
 const prisma = new PrismaClient()
 
 const app = express()
 
 app.use(express.json())
+app.use(cors())
 
 
  app.post('/usuarios',async (req, res) => {
@@ -25,7 +27,7 @@ app.use(express.json())
      console.log(res);
    } catch (error) {
      console.log(error);
-     return  res.status(400).json({ERRO:`: ${error.meta.target} já cadastrado`});
+     return  res.status(400).json({ERRO:`: ${error.meta.target}`});
    }
      
 })
@@ -108,6 +110,6 @@ app.delete('/usuarios/:id', async (req,res) => {
 
 const PORT = process.env.PORT
 
-app.listen(3000, () => {
+app.listen(PORT, () => {
      console.log("Servidor - Online na porta: " + PORT);
 })

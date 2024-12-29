@@ -3,6 +3,7 @@
 
 // Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+//npx prisma migrate dev --name nome-da-alteracao
 
 generator client {
   provider = "prisma-client-js"
@@ -14,10 +15,41 @@ datasource db {
 }
 
 model User {
-  id     String  @id @default(auto()) @map("_id") @db.ObjectId
-  name   String
-  cpf    String? @unique
-  email  String  @unique
+  id         String  @id @default(auto()) @map("_id") @db.ObjectId
+  name       String
+  cpf        String? @unique
+  email      String  @unique
   adressname String?
-  phone  String?
+  phone      String?
 }
+
+// model Car {
+//   id             String   @id @default(auto()) @map("_id") @db.ObjectId
+//   placa          String?
+//   cor            String
+//   ano            String
+//   marca          String
+//   modelo         String?
+//   cambio         String?
+//   fotoURL        String?
+//   airbag         String?
+//   climatizador   String?
+//   vidroEletrico  String?
+//   alarme         String?
+//   cameraTraseira String?
+//   travaEletrica  String?
+//   manutencao     String?
+//   revisao        DateTime
+// }
+
+// model Rent {
+//   id         String   @id @default(auto()) @map("_id") @db.ObjectId
+//   counter    Int
+//   cpf        String
+//   email      String?
+//   adressname String?
+//   phone      String
+//   createdAt  DateTime @default(now())
+//   endAt      DateTime
+//   carRented  Json
+// }
